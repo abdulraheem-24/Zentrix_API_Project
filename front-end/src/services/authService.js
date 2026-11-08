@@ -73,3 +73,54 @@ export async function getCurrentUser(accessToken) {
     throw new Error(getApiErrorMessage(error));
   }
 }
+
+
+
+
+// forgot password endpoints 
+
+
+export async function requestPasswordReset(email) {
+  try {
+    const { data } = await api.post("auth/forgot-password/", {
+      email: email.trim().toLowerCase(),
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(getApiErrorMessage(error));
+  }
+}
+
+
+export async function verifyPasswordResetOTP(email, otp) {
+  try {
+    const { data } = await api.post("auth/verify-otp/", {
+      email: email.trim().toLowerCase(),
+      otp,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(getApiErrorMessage(error));
+  }
+}
+
+
+export async function resetUserPassword({
+  reset_token,
+  new_password,
+  confirm_password,
+}) {
+  try {
+    const { data } = await api.post("auth/reset-password/", {
+      reset_token,
+      new_password,
+      confirm_password,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(getApiErrorMessage(error));
+  }
+}

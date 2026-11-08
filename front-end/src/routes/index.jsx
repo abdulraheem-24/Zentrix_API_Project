@@ -16,6 +16,9 @@ import AdminOrders from "../AdminSide/pages/AdminOrders";
 import AdminDashboard from "../AdminSide/pages/AdminDashboard";
 import AdminUsers from "../AdminSide/pages/AdminUsers";
 import useAuth from "../hooks/useAuth";
+import ForgotPassword from "../pages/ForgotPassword";
+import VerifyOTP from "../pages/VerifyOTP";
+import ResetPassword from "../pages/ResetPassword";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -49,6 +52,12 @@ export default function AppRouter () {
                     </Route>
 
                     <Route path="orderSuccess" element={<OrderSuccess/>}/>
+
+
+                    <Route path="forgot-password" element={<ForgotPassword />}/>
+                    <Route path="verify-otp" element={<VerifyOTP />}/>
+                    <Route path="reset-password"element={<ResetPassword />}/>
+                
                 </Route>
 
                 <Route path="admin" element={<AdminLayout/>}>
